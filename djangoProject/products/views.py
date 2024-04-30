@@ -4,13 +4,13 @@ from .forms import ProductForm, OrderForm
 
 def create_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('product_list')
     else:
         form = ProductForm()
-    return render(request, 'create_product.html', {'form': form})
+    return render(request, 'add_product.html', {'form': form})
 
 def update_product(request, pk):
     product = get_object_or_404(Product, pk=pk)
