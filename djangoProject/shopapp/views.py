@@ -1,7 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from ecommerce_project.order_analysis import get_ordered_products
 
+def orders(request):
+    # Вызов функции для анализа заказов
 
+    html = """
+    
+    <h1>Вывод в консоли</h1>
+    <p>Здесь вы найдете интересные статьи, новости и многое другое.</p>
+    
+    """
+    print(get_ordered_products('Alice', 365))
+    return HttpResponse(html)
+
+    
 def home(request):
     html = """
     <h1>Добро пожаловать на мой первый Django-сайт!</h1>
